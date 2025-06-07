@@ -21,7 +21,7 @@ struct TraitNode {
  *
  */
 void get_trait_counts(struct node **trait_counts, struct node *things) {
-	const int PEOPLE_CT = length(things);
+	const int THING_CT = length(things);
 	struct Thing *thing;
 	struct TraitNode *trait;
 	char *thing_trait;
@@ -32,7 +32,7 @@ void get_trait_counts(struct node **trait_counts, struct node *things) {
 	*trait_counts = NULL;
 
 	/* iterate over each thing */
-	for (i = 0; i < PEOPLE_CT; i++) {
+	for (i = 0; i < THING_CT; i++) {
 		thing = get_node(things, i)->value;
 		thing_trait_ct = length(thing->traits);
 
@@ -65,10 +65,10 @@ void get_trait_counts(struct node **trait_counts, struct node *things) {
  *
  * Parameters:
  * trait_counts - linked list of TraitNodes
- * PEOPLE_CT - total # of things on the list
+ * THING_CT - total # of things on the list
  *
  */
-char *get_guess(struct node *trait_counts, const int PEOPLE_CT) {
+char *get_guess(struct node *trait_counts, const int THING_CT) {
 	char *guess;
 	int min_dist = INT_MAX, dist;
 	const int TOTAL_TRAIT_CT = length(trait_counts);
@@ -77,9 +77,9 @@ char *get_guess(struct node *trait_counts, const int PEOPLE_CT) {
 	for (i = 0; i < TOTAL_TRAIT_CT; i++) {
 		trait_n = get_node(trait_counts, i)->value;
 
-		if (trait_n->count != 0 && trait_n->count != PEOPLE_CT) {
+		if (trait_n->count != 0 && trait_n->count != THING_CT) {
 			/* If information would be gained... */
-			dist = trait_n->count - PEOPLE_CT / 2;
+			dist = trait_n->count - THING_CT / 2;
 			if (dist < 0) {
 				dist = -dist;
 			}
