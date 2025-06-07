@@ -113,7 +113,7 @@ bool has_trait(struct Thing *thing, const char *TRAIT) {
 }
 
 /**
- *	Removes things who do or do not have a given trait.
+ *	Removes things what do or do not have a given trait.
  *
  *	Parameters:
  *	things - linked list of Thing structs
@@ -139,7 +139,7 @@ int main(void) {
 	int things_ct;
 	int i;
 	char *guess, resp[MAX_STRLEN];
-	printf("Welcome to the Guessing Game! Answer yes/no to each question, and I will divine who you're thinking of!\n");
+	printf("Welcome to the Guessing Game! Answer yes/no to each question, and I will divine what you're thinking of!\n");
 
 	generate_things(&things);
 	things_ct = length(things);
