@@ -51,7 +51,7 @@ void get_trait_counts(struct node **trait_counts, struct node *things) {
 				(((struct TraitNode*)(get_node(*trait_counts, k - 1)->value))->count)++;
 			} else {
 				trait = (struct TraitNode*)calloc(1, sizeof(struct TraitNode));
-				memcpy(trait->trait, thing_trait, strlen(thing_trait));
+				memcpy(trait->trait, thing_trait, strlen(thing_trait) + 1);
 				trait->count = 1;
 				insert_node(trait_counts, trait, 0);
 				total_trait_ct++;
